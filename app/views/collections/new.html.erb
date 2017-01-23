@@ -1,0 +1,32 @@
+<div class="col-md-4 col-md-offset-4">
+  <h2 style="text-align: center">Add a new Collection</h2>
+
+  <%= form_for [@bill,@collection] do |f| %>
+    <% if @collection.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@collection.errors.count, "error") %> prohibited this bill from being saved:</h2>
+
+        <ul>
+        <% @collection.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <%= f.label :amount %><br>
+      <%= f.number_field :amount, min: 0, class: "form-control" %> 
+    </div>
+    <div class="form-group">  
+      <%= f.label :reference %><br>
+      <%= f.text_field :reference, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :collection_date %><br>
+      <%= f.date_select :collection_date, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.hidden_field(:bill_id, :value => params[:bill_id]) %>
+    </div>
+      <%= f.submit class: "btn btn-raised btn-info" %>
+  <% end %>

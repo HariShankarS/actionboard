@@ -1,0 +1,7 @@
+<div class="col-md-4 col-md-offset-4">
+  <h1>New Collection</h1>
+  <%= form_tag(save_collection_json_bills_path, method: :post, multipart: true) do %>
+    <%= file_field_tag 'attachment' %><br>
+    <%= submit_tag "Create", class: "btn btn-raised btn-info" %> 
+  <% end -%>
+</div>

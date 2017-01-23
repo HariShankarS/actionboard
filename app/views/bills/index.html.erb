@@ -1,0 +1,52 @@
+<h3>Invoice List</h3>
+<br>
+<div class="col-md-2">
+  <%= link_to 'Add a new bill', new_bill_path, class: "btn btn-raised btn-primary" %>
+</div>
+<div class="col-md-3">
+  <%= link_to 'Add a new bill with Json', load_json_bills_path, class: "btn btn-raised btn-primary" %>
+</div>
+<div class="col-md-3">
+  <%= link_to 'Add a new collection with Json', load_collection_json_bills_path, class: "btn btn-raised btn-primary" %>
+</div>
+<div class="col-md-2">
+  <%= link_to 'Show Pending bills', bills_path(filter: "pending"), class: "btn btn-raised btn-primary" %>
+</div>
+<div class="col-md-2">
+  <%= link_to 'Show Collected bills', bills_path(filter: "collected"), class: "btn btn-raised btn-primary" %>
+</div>
+<br><br>
+<table>
+  <thead>
+    <tr>
+      <th>Reference</th>
+      <th>Invoice date</th>
+      <th>Customer name</th>
+      <th>Brand manager</th>
+      <th>Narration</th>
+      <th>Amount</th>
+      <th>Total Collection</th>
+      <th>Balance Due</th>
+      <th>Button to add a collection</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bills.each do |bill| %>
+      <tr>
+        <td><%= link_to "#{bill.reference}",bill %></td>
+        <td><%= bill.invoice_date %></td>
+        <td><%= bill.customer_name %></td>
+        <td><%= bill.brand_manager %></td>
+        <td><%= bill.narration %></td>
+        <td><%= bill.amount %></td>
+        <td><%= bill.total_collection %></td>
+        <td><%= bill.balance_due %></td>
+        <td><%= link_to "Add Collection",new_bill_collection_path(bill) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
