@@ -42,7 +42,7 @@
         <td><%= bill.amount %></td>
         <td><%= bill.total_collection %></td>
         <td><%= bill.balance_due %></td>
-        <td><%= link_to "Add Collection",new_bill_collection_path(bill) %></td>
+        <td><%= link_to "Add Collection",new_bill_collection_path(bill,reference: bill.reference ) %></td>
       </tr>
     <% end %>
   </tbody>
